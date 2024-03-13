@@ -1,0 +1,19 @@
+.serchbox {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 10%;
+}
+
+.oldsearch {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.searchinput {
+  width: 40%;
+  padding: 10px 7px;
+  border: 2px solid#89CFF0;
+  border-radius: 8px;
+}
