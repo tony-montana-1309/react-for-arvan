@@ -18,29 +18,67 @@ function Searchbox() {
     const [data, setData] = useState([])
     const [filterData, setFilterData] = useState([])
     const handleFilter = (value) => {
-        const res = filterData.filter(f => f.name.toLowerCasse().includes(value))
+        console.log(value);
+        const res = filterData.filter(f => f.first_name.includes(value.toUpperCase()))
 
         setData(res);
-
+        console.log(data)
         if (value === "") {
             setData([])
         }
     }
 
+    const number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
     return (
-        <div className={style.serchbox}>
-            <div className={style.oldsearch}>
-                <input className={style.searchinput} type="search" placeholder="search" onChange={e => handleFilter(e.target.value)} />
+        <div className={style.page}>
+            <div className={style.serchbox}>
+                <div className={style.oldsearch}>
+                    <input className={style.searchinput} type="search" placeholder="search" onInput={e => handleFilter(e.target.value)} />
+                </div>
             </div>
 
-            <div className="table">
-                {data.map((d, i) => (
-                    <div key={i}>
-                        {d.name}
-                    </div>
-                ))}
-            </div>
+            <table className={style.tabal}>
+                <tr>
+                    <th>number-id</th>
+                    <th>player</th>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div>
+                            {data.map((d, i) => (
+                                <div key={i}>
+                                    <div className={style.intabel}>
+                                        <div className={style.idstyle}>
+                                            {d.id}
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </td>
+
+                    <td>
+                        <div >
+                            {data.map((d, i) => (
+                                <div key={i} className={style.data}>
+                                    <div className={style.intabel}>
+                                        {d.first_name}
+                                        {d.last_name}
+                                        <div>&nbsp;of&nbsp;the&nbsp;</div>
+                                        {d.team.name}
+                                        <div>&nbsp;team</div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </td>
+
+
+                </tr>
+
+            </table>
         </div>
     );
 }
